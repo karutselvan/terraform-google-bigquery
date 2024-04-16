@@ -255,3 +255,15 @@ resource "google_bigquery_routine" "routine" {
 
   return_type = each.value["return_type"]
 }
+
+module "im-workspace" {
+ source = "terraform-google-modules/bootstrap/google//modules/im_cloudbuild_workspace"
+ version = "~> 7.0"
+
+ project_id = "karutselvan-dm-test"
+ deployment_id = "data-warehouse"
+ im_deployment_repo_uri = "github.com/karutselvan/terraform-google-bigquery"
+ im_deployment_ref = "github.com/karutselvan/terraform-google-bigquery/tree/main"
+ github_app_installation_id = "49531130"
+ github_personal_access_token = "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"
+}
